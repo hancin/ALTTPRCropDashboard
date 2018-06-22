@@ -34,6 +34,7 @@ Public Class ObsWebSocketCropper
     Private Const ApprovedChars As String = "0123456789"
 
     Private _cropApi As CropApi
+    Private _scheduleApi As ScheduleApi
     Private ReadOnly _cropperMath As New CropperMath
     Private _vlcListLeft As New DataSet
     Private _vlcListRight As New DataSet
@@ -1396,6 +1397,35 @@ Public Class ObsWebSocketCropper
 
     Private Sub ObsWebSocketCropper_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         My.Settings.Save()
+    End Sub
+
+    Private Sub LoadRaceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadRaceToolStripMenuItem.Click
+
+        If Not String.IsNullOrWhiteSpace(ConfigurationManager.AppSettings("ScheduleURL")) Then
+            _scheduleApi = New ScheduleApi(ConfigurationManager.AppSettings("ScheduleURL"))
+
+            Dim input = CType(InputBox("Please enter the race ID"), Integer?)
+
+            If Not input.HasValue OrElse input.Value = 0 Then
+                MessageBox.Show(Me, "ID not valid, cannot load race.")
+                Exit Sub
+            End If
+            Try
+                Dim episode = _scheduleApi.LoadEpisode(input.Value)
+
+                If episode Is Nothing Then
+                    MessageBox.Show(Me, "Could not load episode from server.")
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                MessageBox.Show(Me, "Could not load episode from server. " & ex.ToString())
+                Exit Sub
+            End Try
+
+
+        Else
+            MessageBox.Show(Me, "You are missing the API config file.  Please ask someone in the restream channel in discord if you believe you should need this file.", ProgramName, MessageBoxButtons.OK)
+        End If
     End Sub
 
 #End Region

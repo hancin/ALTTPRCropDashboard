@@ -227,6 +227,7 @@
     <Compile Include="About.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ApiBase.vb" />
     <Compile Include="Data\ViewModels\CropperViewModel.vb" />
     <Compile Include="Data\ViewModels\RunnerViewModel.vb" />
     <Compile Include="Data\ViewModels\CropViewModel.vb" />
@@ -269,6 +270,7 @@
     <Compile Include="Data\RunnerCrop.vb" />
     <Compile Include="Data\ViewModels\SizeViewModel.vb" />
     <Compile Include="Program.vb" />
+    <Compile Include="ScheduleApi.vb" />
     <Compile Include="UserSettings.Designer.vb">
       <DependentUpon>UserSettings.vb</DependentUpon>
     </Compile>
@@ -331,6 +333,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Schedule\EventChannel.vb" />
+    <Compile Include="Data\Schedule\EventMatch.vb" />
+    <Compile Include="Data\Schedule\EventPlayer.vb" />
+    <Compile Include="Data\Schedule\ScheduleEvent.vb" />
     <Content Include="DB\crops.sql" />
     <None Include="Resources\triforce_light_192_icon.ico" />
     <None Include="Resources\Triforce-light.png" />
@@ -350,6 +356,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

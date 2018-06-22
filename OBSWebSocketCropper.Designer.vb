@@ -133,6 +133,9 @@ Partial Class ObsWebSocketCropper
         Me.lblRightStreamlink = New System.Windows.Forms.Label()
         Me.lblLeftRunnerTwitch = New System.Windows.Forms.Label()
         Me.lblRightRunnerTwitch = New System.Windows.Forms.Label()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.LoadRaceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gbRightGameWindow.SuspendLayout()
         Me.gbRightTimerWindow.SuspendLayout()
         Me.gbLeftTimerWindow.SuspendLayout()
@@ -827,7 +830,7 @@ Partial Class ObsWebSocketCropper
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeUserSettingsToolStripMenuItem, Me.ChangeVLCSettingsToolStripMenuItem, Me.ExpertModeToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeUserSettingsToolStripMenuItem, Me.ChangeVLCSettingsToolStripMenuItem, Me.ToolStripMenuItem2, Me.ExpertModeToolStripMenuItem, Me.LoadRaceToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -867,7 +870,7 @@ Partial Class ObsWebSocketCropper
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'btnSyncWithServer
@@ -1178,6 +1181,23 @@ Partial Class ObsWebSocketCropper
         Me.lblRightRunnerTwitch.TabIndex = 86
         Me.lblRightRunnerTwitch.Text = "Runner Twitch"
         '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(183, 6)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(183, 6)
+        '
+        'LoadRaceToolStripMenuItem
+        '
+        Me.LoadRaceToolStripMenuItem.Name = "LoadRaceToolStripMenuItem"
+        Me.LoadRaceToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12
+        Me.LoadRaceToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.LoadRaceToolStripMenuItem.Text = "Load &Race"
+        '
         'ObsWebSocketCropper
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1363,4 +1383,7 @@ Partial Class ObsWebSocketCropper
     Friend WithEvents btnRightTimerUncrop As Button
     Friend WithEvents btnLeftTimerUncrop As Button
     Friend WithEvents btnLeftGameUncrop As Button
+    Friend WithEvents ToolStripMenuItem2 As ToolStripSeparator
+    Friend WithEvents LoadRaceToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
 End Class

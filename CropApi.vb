@@ -1,16 +1,8 @@
 ﻿
 Imports System.Net.Http
-Imports System.Net.Http.Formatting
-Imports System.Net.Http.Headers
 Imports ALTTPRCropDashboard.Data
-Imports Newtonsoft.Json
-Imports Newtonsoft.Json.Serialization
-
 Public Class CropApi
-    Protected Property Client As New HttpClient
-    Protected Property Formatter As New JsonMediaTypeFormatter With {
-        .SerializerSettings = New JsonSerializerSettings With {.Formatting = Formatting.Indented, .ContractResolver = New CamelCasePropertyNamesContractResolver}
-    }
+    Inherits ApiBase
 
     Public Function GetCrops() As IEnumerable(Of RunnerInfo)
         Dim response = Client.GetAsync("v1/crops").Result
@@ -40,11 +32,7 @@ Public Class CropApi
     End Sub
 
     Public Sub New(apiPath As String)
-        Client.BaseAddress = New Uri(apiPath)
-        Client.DefaultRequestHeaders.Accept.Clear()
-        Client.DefaultRequestHeaders.Accept.Add(
-            New MediaTypeWithQualityHeaderValue("application/json"))
-        Client.Timeout = TimeSpan.FromSeconds(10)
+        MyBase.New(apiPath)
     End Sub
 
 End Class
